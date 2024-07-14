@@ -41,37 +41,3 @@ if __name__ == '__main__':
 
 
 
-
-
-# from flask import Flask , render_template , request
-# import numpy as np
-# import tensorflow as tf
-# import pickle
-# predict_arr = []
-# scaler_deep_learning = pickle.load(open('scaler','rb'))
-# model = tf.keras.models.load_model('audioBooks_model.h5')
-
-
-
-# app = Flask(__name__)
-
-# @app.route('/')
-# def hello():
-#     return render_template("index.html")
-
-# @app.route('/',methods = ['POST'])
-# def data():
-#     if request.method == 'POST':
-#        New_Audiobooks_Data = (request.form['data'])
-#        raw_data = np.loadtxt('New_Audiobooks_Data',delimiter = ',')
-#        all_inputs = raw_data[:,1:] 
-
-#        scaled_data = scaler_deep_learning.transform(all_inputs)
-
-#        predict_arr = np.argmax(model.predict(scaled_data),1)
-
-#     return render_template("index.html", prediction = predict_arr)
-
-
-# if __name__ == '__main__':
-#     app.run(debug=True)
