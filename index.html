@@ -3,16 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Marks Prediction</title>
+    <title>Customer Conversion Prediction</title>
     <!-- Include Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
         body {
             padding: 20px;
+            background-color: #f8f9fa;
         }
         .container {
-            max-width: 600px;
+            max-width: 800px;
             margin: auto;
+        }
+        .header {
+            background-color: #343a40; /* Dark gray */
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 1.8rem;
+            text-align: center;
         }
         table {
             margin-top: 20px;
@@ -21,18 +34,20 @@
 </head>
 <body>
     <div class="container">
-        <h1 class="text-center">Marks Prediction</h1>
+        <div class="header">
+            <h1>Predicting Customer Conversion: A Data-Driven Approach</h1>
+        </div>
         
         <form method="POST" action="/" enctype="multipart/form-data" class="form-inline justify-content-center">
             <div class="form-group mb-2">
-                <input type="file" name="data" placeholder="Upload a csv file" accept=".csv" class="form-control-file">
+                <input type="file" name="data" placeholder="Upload a CSV file" accept=".csv" class="form-control-file">
             </div>
             <div class="form-group mx-sm-3 mb-2">
                 <input type="submit" value="Upload" class="btn btn-primary">
             </div>
         </form>
 
-        <h2 class="text-center">Prediction:</h2>
+        <h2 class="text-center mt-4">Prediction Results:</h2>
         {% if prediction %}
             <table class="table table-striped table-bordered">
                 <thead class="thead-dark">
@@ -45,7 +60,13 @@
                     {% for value in prediction %}
                         <tr>
                             <td>{{ loop.index }}</td>
-                            <td>{{ value }}</td>
+                            <td>
+                                {% if value == 0 %}
+                                    will not convert
+                                {% else %}
+                                    will convert
+                                {% endif %}
+                            </td>
                         </tr>
                     {% endfor %}
                 </tbody>
@@ -60,5 +81,4 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
-
 
